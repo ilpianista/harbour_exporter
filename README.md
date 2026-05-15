@@ -54,3 +54,5 @@ The SailfishOS Community Team is on Liberapay:
 ## License
 
 MIT
+
+[quay]: https://quay.io/repository/ilpianista/harbour-exporter

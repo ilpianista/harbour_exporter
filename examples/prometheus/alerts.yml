@@ -1,0 +1,20 @@
+groups:
+  - name: harbour
+    rules:
+      - alert: HarbourNewReview
+        expr: harbour_app_reviews > harbour_app_reviews offset 3h
+        for: 0m
+        labels:
+          severity: info
+        annotations:
+          summary: "New review for {{ $labels.app_name }}"
+          description: "App \"{{ $labels.app_name }}\" ({{ $labels.app_id }}) now has {{ $value }} reviews."
+
+      - alert: HarbourExporterDown
+        expr: harbour_up == 0
+        for: 10m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Harbour exporter is down"
+          description: "The harbour exporter at {{ $labels.instance }} has been unreachable for more than 10 minutes."

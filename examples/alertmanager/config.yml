@@ -1,0 +1,15 @@
+route:
+  receiver: email
+  group_by: [alertname]
+  group_wait: 10s
+  group_interval: 10s
+
+receivers:
+  - name: email
+    email_configs:
+      - to: you@example.com
+        from: alertmanager@example.com
+        smarthost: smtp.example.com:587
+        auth_username: your_smtp_username
+        auth_password: your_smtp_password
+        send_resolved: false
